@@ -5,7 +5,7 @@
 {% if latest_job_list %}
     <ul>
     {% for job in latest_job_list %}
-     <tr> <td>  <li><a href="/emailffa/{{ job.id }}/">{{ job.job_text }}</a></li></td><td>&nbsp;&nbsp;&nbsp;&nbsp; email </td></tr>
+     <tr> <td>  <li><a href="{% url 'emailffa:detail' job.id %}">{{ job.job_text }}</a></li></td><td>&nbsp;&nbsp;&nbsp;&nbsp; m.moawad@ffaprivatebank.com </td></tr>
     {% endfor %}
     </ul>
 {% else %}

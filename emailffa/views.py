@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.http import HttpResponse
 from .models import Job
@@ -13,4 +13,5 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def detail(request, job_id):
-    return HttpResponse("You're looking at job %s." % job_id)
+    job = get_object_or_404(Job, pk=job_id)
+    return render(request, 'emailffa/detail.html', {'job': job})

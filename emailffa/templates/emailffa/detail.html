@@ -1,0 +1,7 @@
+<h1>{{ job.job_text }}</h1>
+
+<ul>
+{% for email in job.email_set.all %}
+    <li>{{ email.email_text }}</li>
+{% endfor %}
+</ul>
