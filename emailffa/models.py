@@ -19,8 +19,8 @@ class Job(models.Model):
  
 class Email(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    email_text = models.CharField(max_length=2000)
-   
+    email_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.email_text
