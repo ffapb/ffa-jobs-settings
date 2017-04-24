@@ -19,3 +19,10 @@ class DetailView(generic.DetailView):
       model = Job
       template_name = 'emailffa/detail.html'
 
+
+
+def detail(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+    return render(request, 'emailffa/detail.html', {'job': job})
+
+

@@ -1,0 +1,11 @@
+<h1>{{ email.email_text }}</h1>
+
+<ul>
+{% for email in email.email_set.all %}
+    <li>{{ email.email_text }}</li>
+{% endfor %}
+</ul>
+
+
+
+
