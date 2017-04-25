@@ -12,8 +12,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_job_list'
 
     def get_queryset(self):
-        """Return the  published jobs."""
-        return Job.objects.order_by('-pub_date')
+        """Return the  jobs by order alphabetic."""
+        return Job.objects.order_by('job_text')
 
 class DetailView(generic.DetailView):
       model = Job

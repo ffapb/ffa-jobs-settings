@@ -9,7 +9,8 @@ from django.utils.encoding import python_2_unicode_compatible
 class Job(models.Model):
     job_text = models.CharField(max_length=255, unique=True)
     pub_date = models.DateTimeField('date published')
-    job_text.alphabetic_filter = True
+    
+
 
     def __str__(self):
         return self.job_text
@@ -24,3 +25,5 @@ class Email(models.Model):
 
     def __str__(self):
         return self.email_text
+
+
