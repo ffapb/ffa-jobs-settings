@@ -21,3 +21,12 @@
   		ordering = ('job_text',) # The negative sign indicate descendent order
  
 	admin.site.register(Job,JobAdmin)
+
+
+
+#Edit your emailffa/admin.py file again and add an improvement to the Job change list page: filters using the list_filter. Add the following line to JobAdmin:
+
+	list_filter = ['pub_date']
+
+
+#Pagination example https://ana-balica.github.io/2015/01/29/pagination-in-django/
