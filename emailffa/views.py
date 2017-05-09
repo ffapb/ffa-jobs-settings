@@ -7,6 +7,7 @@ from django.views import generic
 
 from .models import Job
 from .models import Email
+#from .models import Cron
 from django.contrib import auth
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 

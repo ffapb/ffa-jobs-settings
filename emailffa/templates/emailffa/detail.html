@@ -59,32 +59,38 @@
 				<table cellSpacing="0" cellPadding="0" width="779" align="center" border="0">
 					
 					<tr >
-						<td align="left" ><font size="3.5" color="#04366C"><b>{{ job.job_text }}</b></font></td>
+						<td align="left" ><font size="3.5" color="#04366C"><b>{{ job.job_text }} </b></font></td>
 					</tr>
-					
-
+					<tr>
+						<td height="30" >Cron: {{ job.job_cron }}
+					        </td>
+					</tr>
 					<tr>
 						<td>
 							<table> 
 									
 								 <tr>
+ 																	
 									<td height="12" >
 											<ul>
 											{% for email in job.email_set.all %}
 											</ul>
 									</td>
+									
 								</tr>
 
 								 <tr>
 									<td height="30" >
     									<li>{{ email.email_text }}</li>
 									</td>
+									
 								 </tr>
 								{% endfor %}
 								
 
 							</table>
 						</td>
+						
 					</tr>
 
 				</table>
