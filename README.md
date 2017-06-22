@@ -1,4 +1,8 @@
 #Fix issue: django.db.utils.IntegrityError: NOT NULL constraint failed:
+	
+#create a Python virtual environment by typing:
+virtualenv myprojectenv
+
 
 	Run: - python manage.py makemigrations 
              - python manage.py sqlmigrate 
