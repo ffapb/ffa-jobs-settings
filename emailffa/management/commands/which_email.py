@@ -20,20 +20,31 @@ class Command(BaseCommand):
        parser.add_argument('job', nargs='+', type=str)
        
      
-   
-       # Your code goes here
+          # Your code goes here
         
-        
-           
   
     def handle(self,*args, **options):
 
-        job= options['job']
+        for email_text in options['job']:
+            try:
+                email = Email.objects.filter(pk="email_text")
+            except Email.DoesNotExist:
+                raise CommandError('Job "%s" does not exist' % job)
 
-       
+           
+
+            self.stdout.write('Successfully "%s"' % email_text)
+	#error
+	# return int(value) ValueError: invalid literal for int() with base 10: 'Debitors'
 
 
-       #to print all emails ans fixed the issue below
+
+        #emails = Email.objects.filter(job=self.job)
+        #for email in emails:
+            #print email 
+
+
+       #to print all emails and fixed the issue below
         #for email in Email.objects.all():
             #print (email.email_text) 
         
