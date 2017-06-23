@@ -13,7 +13,7 @@ from django.utils.encoding import (
 
 
 class Command(BaseCommand):
-    
+    args = '<job>'
     help = 'My custom django management command'
 
     def add_arguments(self, parser):
@@ -25,17 +25,19 @@ class Command(BaseCommand):
   
     def handle(self,*args, **options):
 
-        for email_text in options['job']:
-            try:
-                email = Email.objects.filter(pk="email_text")
-            except Email.DoesNotExist:
-                raise CommandError('Job "%s" does not exist' % job)
-
+        
+          try:
+            job = str(args[0])
+            emails = Email.objects.get(pk=job)
+          except:
+            emails = Email.objects.all()
+            print "bla bla"
+          for email in emails:
+            self.stdout.write(email.email_text)
            
 
-            self.stdout.write('Successfully "%s"' % email_text)
-	#error
-	# return int(value) ValueError: invalid literal for int() with base 10: 'Debitors'
+            
+	
 
 
 
@@ -62,3 +64,13 @@ class Command(BaseCommand):
 	#emails = Email.objects.filter(job='40')
         #for email in emails:
             #print email 
+
+
+
+#for email_id in options['email_id']:
+            #try:
+                #email = Email.objects.filter(pk="email_id")
+            #except Email.DoesNotExist:
+                #raise CommandError('email "%s" does not exist' % email_id)
+
+            #self.stdout.write('Successfully "%s"' % email_text)
