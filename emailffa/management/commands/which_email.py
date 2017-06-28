@@ -24,21 +24,18 @@ class Command(BaseCommand):
         
   
     def handle(self,*args, **options):
-
         
-          try:
-            job = str(args[0])
-            emails = Email.objects.get(pk=job)
-          except:
-            emails = Email.objects.all()
-            print "bla bla"
-          for email in emails:
-            self.stdout.write(email.email_text)
-           
+        for job_name in options['job']:
+            try:
+                job = Job.objects.get(job_text=job_name)
+            except Job.DoesNotExist:
+                raise CommandError('Job "%s" does not exist' % job_name)   
 
-            
-	
-
+            self.stdout.write('%s:' % (job_name))
+            emails = Email.objects.filter(job=job)
+            for email in emails:
+              print("- "+email.email_text)
+        
 
 
         #emails = Email.objects.filter(job=self.job)
