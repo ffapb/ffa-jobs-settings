@@ -28,8 +28,8 @@ virtualenv myprojectenv
 
 
 
-# Edit your emailffa/admin.py file again and add an improvement to the Job change list page: filters using the list_filter. 
-
+# Filters using the list_filter. 
+Edit your emailffa/admin.py file again and add an improvement to the Job change list page:
 Add the following line to JobAdmin:
 
 	list_filter = ['pub_date']
