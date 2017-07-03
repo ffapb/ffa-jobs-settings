@@ -1,4 +1,4 @@
-#Fix issue: django.db.utils.IntegrityError: NOT NULL constraint failed:
+# Fix issue: django.db.utils.IntegrityError: NOT NULL constraint failed:
 	
 #create a Python virtual environment by typing:
 virtualenv myprojectenv
@@ -8,7 +8,7 @@ virtualenv myprojectenv
              - python manage.py sqlmigrate 
              - python manage.py migrate
 
-#Ordering in Selecting Objects in Django Model -(example by job_text)
+# Ordering in Selecting Objects in Django Model -(example by job_text)
 #add in view.py 
 
 	def get_queryset(self):
@@ -17,8 +17,8 @@ virtualenv myprojectenv
 
 
 
-#Ordering the display items alphabetically in Django-Admin
-#add in admin.py
+# Ordering the display items alphabetically in Django-Admin
+# add in admin.py
 
 	class JobAdmin(admin.ModelAdmin): 
   		list_display = ('job_text', 'pub_date')
@@ -28,9 +28,9 @@ virtualenv myprojectenv
 
 
 
-#Edit your emailffa/admin.py file again and add an improvement to the Job change list page: filters using the list_filter. Add the following line to JobAdmin:
+# Edit your emailffa/admin.py file again and add an improvement to the Job change list page: filters using the list_filter. Add the following line to JobAdmin:
 
 	list_filter = ['pub_date']
 
 
-#Pagination example https://ana-balica.github.io/2015/01/29/pagination-in-django/
+# Pagination example https://ana-balica.github.io/2015/01/29/pagination-in-django/
