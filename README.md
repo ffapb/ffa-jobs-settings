@@ -37,7 +37,15 @@ filters using the list_filter. Add the following line to JobAdmin:
 
 # Pagination example https://ana-balica.github.io/2015/01/29/pagination-in-django/
 # Remove directory from remote repository after adding them to .gitignore
-git rm -r --cached . 
+ git rm -r --cached . 
  git add .
  git commit -m 'Removed all files that are in the .gitignore' 
  git push origin master
+
+
+# Use the "ours" merge strategy to overwrite master with other branch like temp  
+
+ git checkout temp
+ git merge -s ours master
+ git checkout master
+ git merge temp
