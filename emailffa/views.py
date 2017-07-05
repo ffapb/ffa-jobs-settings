@@ -32,7 +32,7 @@ class DetailView(generic.DetailView):
 	  
           if not asjson:
               return super(DetailView, self).get(*args, **kwargs)
-<<<<<<< HEAD
+
 
 	  #https://stackoverflow.com/questions/34460708/checkoutview-object-has-no-attribute-object
           self.object = self.get_object()
@@ -50,24 +50,3 @@ class DetailView(generic.DetailView):
 #def detail(request, job_id):
     #job = get_object_or_404(Job, pk=job_id)
     #return render(request, 'emailffa/detail.html', {'job': job})
-=======
->>>>>>> oldversion
-
-	  #https://stackoverflow.com/questions/34460708/checkoutview-object-has-no-attribute-object
-          self.object = self.get_object()
-          context = super(DetailView, self).get_context_data(**kwargs)
-          job = context["job"]
-          output = {
-            "job_text": job.job_text,
-            "pub_date": job.pub_date.strftime("%Y-%m-%d"),
-            "job_cron": job.job_cron,
-            "email_set": [x.email_text for x in job.email_set.all()]
-          }
-          return JsonResponse(output)
-
-
-#def detail(request, job_id):
-    #job = get_object_or_404(Job, pk=job_id)
-    #return render(request, 'emailffa/detail.html', {'job': job})
-
-
