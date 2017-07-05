@@ -64,7 +64,7 @@
     						<ul>
    					 {% for job in latest_job_list %}
     					 <tr> 
-						<td>  <li><a href="{% url 'emailffa:detail' job.id %}">{{ job.job_text }} </a></li>
+						<td>  <li><a href="{% url 'emailffa:detail' job.id %}">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a></li>
 						</td>
      					{% endfor %}
   						 </ul>
@@ -136,41 +136,6 @@
 				</table>
 			</td>
 		</tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
