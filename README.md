@@ -3,6 +3,8 @@
 #create a Python virtual environment by typing:
 
 virtualenv myprojectenv
+$ cd my_project_folder
+$ virtualenv my_project
 
 
 	Run: - python manage.py makemigrations 
