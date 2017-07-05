@@ -35,7 +35,8 @@ filters using the list_filter. Add the following line to JobAdmin:
 	list_filter = ['pub_date']
 
 
-# Pagination example https://ana-balica.github.io/2015/01/29/pagination-in-django/
+# Pagination example 
+ https://ana-balica.github.io/2015/01/29/pagination-in-django/
 # Remove directory from remote repository after adding them to .gitignore
  - git rm -r --cached . 
  - git add .
