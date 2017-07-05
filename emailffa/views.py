@@ -1,5 +1,5 @@
 import json
-
+from django.core import serializers
 from django.views import generic
 from django.http import JsonResponse
 
@@ -12,10 +12,32 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class IndexView(generic.ListView):
     template_name = 'emailffa/index.html'
     context_object_name = 'latest_job_list'
+    model= Job
     paginate_by = 15
+
     def get_queryset(self):
         """Return the  jobs by order alphabetic."""
-        return Job.objects.order_by('job_text')
+        return Job.objects.order_by('id')
+
+    def get(self, *args, **kwargs):
+        asjson = self.request.GET.get('asjson', "false")
+        asjson=asjson.lower()=="true"
+	  
+        if not asjson:
+            return super(IndexView, self).get(*args, **kwargs)
+#https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-django-generic-listview
+	
+        queryset = self.get_queryset()
+        data = serializers.serialize("json", queryset)
+        #output = {
+	   #"job_id": job.id,
+           #"job_text": job.job_text
+       # }
+            
+        
+        return JsonResponse(data,safe=False)
+     
+       
 
 class DetailView(generic.DetailView):
       model = Job
@@ -38,6 +60,7 @@ class DetailView(generic.DetailView):
           context = super(DetailView, self).get_context_data(**kwargs)
           job = context["job"]
           output = {
+	    "job_id": job.id,
             "job_text": job.job_text,
             "pub_date": job.pub_date.strftime("%Y-%m-%d"),
             "job_cron": job.job_cron,
