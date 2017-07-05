@@ -51,8 +51,3 @@ class DetailView(generic.DetailView):
     #return render(request, 'emailffa/detail.html', {'job': job})
 
 
-
-
-
-    
-   
