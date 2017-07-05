@@ -34,3 +34,5 @@ virtualenv myprojectenv
 
 
 #Pagination example https://ana-balica.github.io/2015/01/29/pagination-in-django/
+
+test
