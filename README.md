@@ -50,3 +50,12 @@ filters using the list_filter. Add the following line to JobAdmin:
  - git merge -s ours master
  - git checkout master
  - git merge temp
+
+
+
+# How to return JsonResponse in Django generic ListView
+https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-django-generic-listview
+	def get(self, *args, **kwargs):
+    	queryset = self.get_queryset()
+        data = serializers.serialize("json", queryset)
+        return JsonResponse(data, safe=False)
