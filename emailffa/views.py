@@ -25,15 +25,15 @@ class IndexView(generic.ListView):
 	  
         if not asjson:
             return super(IndexView, self).get(*args, **kwargs)
-#https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-django-generic-listview
+        #https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-django-generic-listview
 	
         queryset = self.get_queryset()
-        data = serializers.serialize("json", queryset)
-        #output = {
-	   #"job_id": job.id,
-           #"job_text": job.job_text
-       # }
-            
+        #data = serializers.serialize("json", queryset) -- Get all data from queryset
+        
+        #Get a specific fileds from queryset
+	#https://docs.djangoproject.com/en/1.7/topics/serialization/
+        
+	data = serializers.serialize("json", Job.objects.all(), fields=('id','job_text'))
         
         return JsonResponse(data,safe=False)
      
