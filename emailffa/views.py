@@ -27,13 +27,13 @@ class IndexView(generic.ListView):
             return super(IndexView, self).get(*args, **kwargs)
         #https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-django-generic-listview
 	
-        queryset = self.get_queryset()
+        #queryset = self.get_queryset()
         #data = serializers.serialize("json", queryset) -- Get all data from queryset
         
         #Get a specific fileds from queryset
 	#https://docs.djangoproject.com/en/1.7/topics/serialization/
         
-	data = serializers.serialize("json", Job.objects.all(), fields=('id','job_text'))
+	data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
      
