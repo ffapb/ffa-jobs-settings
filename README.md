@@ -60,3 +60,8 @@ https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-djang
     	queryset = self.get_queryset()
         data = serializers.serialize("json", queryset)
         return JsonResponse(data, safe=False)
+
+
+# Build Docker
+
+docker build . -t minerva22/ffa-jobs-emails
