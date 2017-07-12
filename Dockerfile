@@ -14,7 +14,7 @@ RUN pew in FFA_JOBS_EMAILS pip install pytz
 
 EXPOSE 8000
 WORKDIR /usr/share/ffa-jobs-emails
-COPY ffa-jobs-emails/ .
+COPY . .
 
 COPY docker-entry.sh /usr/bin/
 RUN chmod +x /usr/bin/docker-entry.sh

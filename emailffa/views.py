@@ -22,18 +22,18 @@ class IndexView(generic.ListView):
     def get(self, *args, **kwargs):
         asjson = self.request.GET.get('asjson', "false")
         asjson=asjson.lower()=="true"
-	  
+          
         if not asjson:
             return super(IndexView, self).get(*args, **kwargs)
         #https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-django-generic-listview
-	
+        
         #queryset = self.get_queryset()
         #data = serializers.serialize("json", queryset) -- Get all data from queryset
         
         #Get a specific fileds from queryset
-	#https://docs.djangoproject.com/en/1.7/topics/serialization/
+        #https://docs.djangoproject.com/en/1.7/topics/serialization/
         
-	data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
+        data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
      
@@ -51,16 +51,16 @@ class DetailView(generic.DetailView):
           #http://programtalk.com/vs2/python/2464/django-completion/completion/views.py/
           asjson = self.request.GET.get('asjson', "false")
           asjson=asjson.lower()=="true"
-	  
+          
           if not asjson:
               return super(DetailView, self).get(*args, **kwargs)
 
-	  #https://stackoverflow.com/questions/34460708/checkoutview-object-has-no-attribute-object
+          #https://stackoverflow.com/questions/34460708/checkoutview-object-has-no-attribute-object
           self.object = self.get_object()
           context = super(DetailView, self).get_context_data(**kwargs)
           job = context["job"]
           output = {
-	    "job_id": job.id,
+            "job_id": job.id,
             "job_text": job.job_text,
             "pub_date": job.pub_date.strftime("%Y-%m-%d"),
             "job_cron": job.job_cron,

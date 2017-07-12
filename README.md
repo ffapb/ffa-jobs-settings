@@ -62,6 +62,8 @@ https://stackoverflow.com/questions/39768671/how-to-return-jsonresponse-in-djang
         return JsonResponse(data, safe=False)
 
 
-# Build Docker
+# Docker
 
-docker build . -t minerva22/ffa-jobs-emails
+Build locally: `docker build . -t minerva22/ffa-jobs-emails:local`
+
+Download from [hub.docker.com](https://hub.docker.com/r/minerva22/ffa-jobs-emails/): `docker run -it -p 8000:8000 minerva22/ffa-jobs-emails`
