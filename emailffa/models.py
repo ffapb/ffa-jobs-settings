@@ -20,8 +20,7 @@ class Job(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
-    def __str__(self):
-        return self.job_cron
+   
  
 class Email(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)

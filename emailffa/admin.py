@@ -7,7 +7,7 @@ from .models import Job, Email
 class EmailInline(admin.StackedInline):
     model = Email
     extra = 6
-
+    
 
     
 
@@ -18,7 +18,15 @@ class JobAdmin(admin.ModelAdmin):
   inlines = [EmailInline]
   
 
+
+
+
 admin.site.register(Job,JobAdmin)
-admin.site.register(Email)
+
+
+
+
+
+
 
 #admin.site.register(Cron)
