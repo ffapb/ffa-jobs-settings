@@ -20,6 +20,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('emailffa.urls')),
-    url(r'^emailffa/', include('emailffa.urls')),
     url(r'^admin/', admin.site.urls),
 ]

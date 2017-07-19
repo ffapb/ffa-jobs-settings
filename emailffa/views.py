@@ -2,12 +2,14 @@ import json
 from django.core import serializers
 from django.views import generic
 from django.http import JsonResponse
-
+import operator
 from .models import Job
 #from .models import Email
 #from .models import Cron
 #from django.contrib import auth
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+
 
 class IndexView(generic.ListView):
     template_name = 'emailffa/index.html'
@@ -37,7 +39,20 @@ class IndexView(generic.ListView):
         
         return JsonResponse(data,safe=False)
      
-       
+    def search(request):
+         query_string = ''
+         found_entries = None
+         if ('q' in request.GET) and request.GET['q'].strip():
+            query_string = request.GET['q']
+
+            entry_query = get_query(query_string, ['job_text'])
+
+            found_entries = Entry.objects.filter(entry_query).order_by('-pub_date')
+
+         return render_to_response('templates/index.html',
+                          { 'query_string': query_string, 'found_entries': found_entries },
+                          context_instance=RequestContext(request))      
+         print( 'blala');
 
 class DetailView(generic.DetailView):
       model = Job
