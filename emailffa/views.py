@@ -52,7 +52,7 @@ class IndexView(generic.ListView):
          return render_to_response('templates/index.html',
                           { 'query_string': query_string, 'found_entries': found_entries },
                           context_instance=RequestContext(request))      
-         print( 'blala');
+         
 
 class DetailView(generic.DetailView):
       model = Job
