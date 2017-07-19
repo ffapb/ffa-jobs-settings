@@ -1,6 +1,8 @@
+
+
 import re
 
-from django.db.models import Job
+from django.db.models import job
 
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
@@ -35,3 +37,4 @@ def get_query(query_string, search_fields):
         else:
             query = query & or_query
     return query
+

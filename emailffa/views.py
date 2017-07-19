@@ -38,21 +38,17 @@ class IndexView(generic.ListView):
         data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
-     
+
+class SearchView(generic.ListView):
+    
+   
     def search(request):
-         query_string = ''
-         found_entries = None
-         if ('q' in request.GET) and request.GET['q'].strip():
-            query_string = request.GET['q']
+    	
+    	query = request.GET['q']
+    	t = loader.get_template('templates/results.html')
+   	c = Context({ 'query': query,})
+    	return HttpResponse(t.render(c))
 
-            entry_query = get_query(query_string, ['job_text'])
-
-            found_entries = Entry.objects.filter(entry_query).order_by('-pub_date')
-
-         return render_to_response('templates/index.html',
-                          { 'query_string': query_string, 'found_entries': found_entries },
-                          context_instance=RequestContext(request))      
-         
 
 class DetailView(generic.DetailView):
       model = Job
