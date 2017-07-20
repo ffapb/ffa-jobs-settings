@@ -44,7 +44,7 @@ class IndexView(generic.ListView):
 def search(request):
     job_list = Job.objects.all()
     job_filter = JobFilter(request.GET, queryset=job_list)
-    return render(request, 'search/job_list.html', {'filter': job_filter})
+    return render(request, 'emailffa/job_list.html', {'filter': job_filter})
 
 class DetailView(generic.DetailView):
       model = Job

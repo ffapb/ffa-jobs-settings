@@ -1,0 +1,19 @@
+
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button> 
+  
+  
+  <ul>
+  {% for job in filter.qs %}
+    <li> {{ job.id }}-{{ job.job_text }} </li>
+  {% endfor %}
+  </ul>
+{% endblock %} 
+
+</form>
+ <a href="{% url 'emailffa:search' %}">
+   <button>Reset</button>
+</a>
