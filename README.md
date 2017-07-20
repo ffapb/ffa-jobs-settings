@@ -76,3 +76,47 @@ Copy database file from local server to docker container:
 3b94119bfb68        minerva22/ffa-jobs-emails ...
 > docker cp ~/db.sqlite3 3b94119bfb68:/usr/share/ffa-jobs-emails/
 ```
+
+# How to Filter QuerySets Dynamically
+ - pip install django-filter
+ - Create a file named filters.py inside your app folder
+
+ class UserFilter(django_filters.FilterSet):
+    class Meta:
+        model = Job
+        fields = ['id', 'job_text', ' ]
+
+ - In views.py add a search function:
+def search(request):
+    job_list = Job.objects.all()
+    job_filter = JobFilter(request.GET, queryset=job_list)
+    return render(request, 'emailffa/job_list.html', {'filter': job_filter})
+
+
+  - The a route in urls.py:
+ url(r'^search/$', views.search, name='search'),
+
+
+ - Finally, create a html file in templates 'job_list.html':
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button> 
+  
+  
+  <ul>
+  {% for job in filter.qs %}
+    <li> {{ job.id }}-{{ job.job_text }} </li>
+  {% endfor %}
+  </ul>
+{% endblock %} 
+
+</form>
+ <a href="{% url 'emailffa:search' %}">
+   <button>Reset</button>
+</a>
+
+
+
+
