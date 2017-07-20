@@ -1,0 +1,13 @@
+
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for job in filter.qs %}
+    <li>{{ job.job_text }} - {{ user.id }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

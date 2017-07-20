@@ -6,8 +6,9 @@ import operator
 from .models import Job
 #from .models import Email
 #from .models import Cron
-#from django.contrib import auth
-
+#from django.contrib.auth.models import Job
+from django.shortcuts import render
+from .filters import JobFilter
 
 
 
@@ -21,7 +22,7 @@ class IndexView(generic.ListView):
         """Return the  jobs by order alphabetic."""
         return Job.objects.order_by('id')
 
-    def get(self, *args, **kwargs):
+    
         asjson = self.request.GET.get('asjson', "false")
         asjson=asjson.lower()=="true"
           
@@ -39,16 +40,11 @@ class IndexView(generic.ListView):
         
         return JsonResponse(data,safe=False)
 
-class SearchView(generic.ListView):
-    
-   
-    def search(request):
-    	
-    	query = request.GET['q']
-    	t = loader.get_template('templates/results.html')
-   	c = Context({ 'query': query,})
-    	return HttpResponse(t.render(c))
-
+#https://simpleisbetterthancomplex.com/tutorial/2016/11/28/how-to-filter-querysets-dynamically.html
+def search(request):
+    job_list = Job.objects.all()
+    job_filter = JobFilter(request.GET, queryset=job_list)
+    return render(request, 'search/job_list.html', {'filter': job_filter})
 
 class DetailView(generic.DetailView):
       model = Job
