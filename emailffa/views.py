@@ -1,8 +1,8 @@
 import json
-from django.core import serializers
+#from django.core import serializers
 from django.views import generic
 from django.http import JsonResponse
-import operator
+
 from .models import Job
 #from .models import Email
 #from .models import Cron
@@ -21,7 +21,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the  jobs by order alphabetic."""
         return Job.objects.order_by('id')
-
+    def get(self, *args, **kwargs):
     
         asjson = self.request.GET.get('asjson', "false")
         asjson=asjson.lower()=="true"
