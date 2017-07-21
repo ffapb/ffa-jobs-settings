@@ -15,7 +15,7 @@
 				<table cellSpacing="0" cellPadding="0" width="779" border="0">
 				<TBODY>
 			<tr><td>
-<a  href="{% url 'admin:index' %}">Admin</a>&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-emails/">GitHub Link</a>&nbsp;<a  href="{% url 'emailffa:search' %}">Search</a></td>
+<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-emails/" style="text-decoration: none">GitHub Link</a>&nbsp;<a  href="{% url 'emailffa:search' %}" style="text-decoration: none">Search</a></td>
 </tr>
 	
 					
@@ -63,14 +63,14 @@
 			<td>
 
 				<table cellSpacing="12px" cellPadding="0" width="779" align="center" border="0">
-					<tr><td><a href=" ?asjson=true">asjson</a></td></tr>
+					<tr><td><a href=" ?asjson=true" style="text-decoration: none">asjson</a></td></tr>
 
 					{% if latest_job_list %}
     						<ul>
    					 {% for job in latest_job_list %}
 					
     					 <tr> 
-						<td>  <li><a href="{% url 'emailffa:detail' job.id %}">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a>
+						<td>  <li><a href="{% url 'emailffa:detail' job.id %}" style="text-decoration: none">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a>
 </td>
      					{% endfor %}
   						 </ul>
