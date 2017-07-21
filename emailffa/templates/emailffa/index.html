@@ -58,7 +58,7 @@
 			<td height="12">
 			</td>
 		</tr>
-
+	
       	<tr>
 			<td>
 
@@ -68,9 +68,10 @@
 					{% if latest_job_list %}
     						<ul>
    					 {% for job in latest_job_list %}
+					
     					 <tr> 
-						<td>  <li><a href="{% url 'emailffa:detail' job.id %}">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a></li>
-						</td>
+						<td>  <li><a href="{% url 'emailffa:detail' job.id %}">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a>
+</td>
      					{% endfor %}
   						 </ul>
 					{% else %}

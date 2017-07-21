@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^search/$', views.search, name='search'),
-    
+    url(r'^(?P<pk>[0-9]+)/$/?asjson=true', views.DetailView.as_view(), name='detail'),
     
 
     
