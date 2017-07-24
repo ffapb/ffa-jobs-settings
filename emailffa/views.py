@@ -9,7 +9,7 @@ from .models import Job
 #from django.contrib.auth.models import Job
 from django.shortcuts import render
 from .filters import JobFilter
-
+from .__init__ import __version__
 
 
 class IndexView(generic.ListView):
@@ -39,6 +39,12 @@ class IndexView(generic.ListView):
         data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
+
+    def get_context_data(self, **kwargs):
+      context = super(IndexView, self).get_context_data(**kwargs)
+      context['version']=__version__
+      return context
+
 
 #https://simpleisbetterthancomplex.com/tutorial/2016/11/28/how-to-filter-querysets-dynamically.html
 def search(request):
