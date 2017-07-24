@@ -15,7 +15,7 @@
 				<table cellSpacing="0" cellPadding="0" width="779" border="0">
 				<TBODY>
 			<tr><td>
-<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-emails/" style="text-decoration: none">GitHub Link</a>&nbsp;<a  href="{% url 'emailffa:search' %}" style="text-decoration: none">Search</a></td>
+<a  href="{% url 'emailffa:index' %}" style="text-decoration: none">Home</a>&nbsp;<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-emails/" style="text-decoration: none">GitHub Link</a>&nbsp;<a  href="{% url 'emailffa:search' %}" style="text-decoration: none">Search</a></td>
 </tr>
 	
 					
@@ -48,7 +48,6 @@
 						<FONT color="#ffffff"><MARQUEE bgcolor="#04366C" direction="left" loop="50" width="780" scrolldelay="150">
 						<STRONG>FFA Private Bank Jobs Email</STRONG></MARQUEE></FONT></DIV>
 						</td>
-					</tr>
 
 				</table>
 			</td>
@@ -63,7 +62,15 @@
 			<td>
 
 				<table cellSpacing="12px" cellPadding="0" width="779" align="center" border="0">
-					<tr><td><a href=" ?asjson=true" style="text-decoration: none">asjson</a></td></tr>
+					<tr><td><a href=" ?asjson=true" style="text-decoration: none">asjson</a></td>
+
+					</tr>
+
+
+
+
+
+</tr>
 
 					{% if latest_job_list %}
     						<ul>
