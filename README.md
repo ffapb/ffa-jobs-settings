@@ -87,6 +87,12 @@ Copy database file from local server to docker container:
         fields = ['id', 'job_text', ' ]
 
  - In views.py add a search function:
+
+https://simpleisbetterthancomplex.com/tutorial/2016/11/28/how-to-filter-querysets-dynamically.html
+
+install:
+pip install django-filter
+
 def search(request):
     job_list = Job.objects.all()
     job_filter = JobFilter(request.GET, queryset=job_list)

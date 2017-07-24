@@ -10,7 +10,7 @@ RUN pew in FFA_JOBS_EMAILS pip3 install Django
 
 # for queryset filter in openCasesSameDate
 RUN pew in FFA_JOBS_EMAILS pip install pytz
-
+RUN pew in FFA_JOBS_EMAILS pip install django_filter
 
 EXPOSE 8000
 WORKDIR /usr/share/ffa-jobs-emails
