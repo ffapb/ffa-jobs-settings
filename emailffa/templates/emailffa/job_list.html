@@ -72,7 +72,7 @@
   
   <ul>
   {% for job in filter.qs %}
-    <li> {{ job.id }}-{{ job.job_text }} </li>
+    <li><a href="{% url 'emailffa:detail' job.id %}" style="text-decoration: none"> {{ job.id }}-{{ job.job_text }}</a> </li>
   {% endfor %}
   </ul>
 {% endblock %} 
