@@ -3,7 +3,7 @@ import json
 from django.views import generic
 from django.http import JsonResponse
 
-from .models import Job
+from .models import Job,Department
 #from .models import Email
 #from .models import Cron
 #from django.contrib.auth.models import Job
@@ -11,8 +11,18 @@ from django.shortcuts import render
 from .filters import JobFilter
 from .__init__ import __version__
 
+class DepartmentMixin(object):
+    def get_departments(self):
+        return Department.objects.all()
 
-class IndexView(generic.ListView):
+    def get_context_data(self, **kwargs):
+        context = super(DepartmentMixin, self).get_context_data(**kwargs)
+        context['departments'] = self.get_departments()
+        return context
+
+
+
+class IndexView(DepartmentMixin, generic.ListView):
     template_name = 'emailffa/index.html'
     context_object_name = 'latest_job_list'
     model= Job

@@ -7,11 +7,19 @@ from django.utils.encoding import python_2_unicode_compatible
 
 
 
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.name
+
 class Job(models.Model):
     job_text = models.CharField(max_length=255, unique=True)
     pub_date = models.DateTimeField('date published')
     job_cron=models.CharField(max_length=200)
- 
+    department = models.ForeignKey(Department)
 
 
     def __str__(self):
@@ -37,3 +45,5 @@ class Email(models.Model):
 
     #def __str__(self):
      #   return self.cron_text
+
+

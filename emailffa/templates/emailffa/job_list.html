@@ -86,18 +86,7 @@
 
 </tr>
 
-					{% if latest_job_list %}
-    						<ul>
-   					 {% for job in latest_job_list %}
 					
-    					 <tr> 
-						<td>  <li><a href="{% url 'emailffa:detail' job.id %}" style="text-decoration: none">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a>
-</td>
-     					{% endfor %}
-  						 </ul>
-					{% else %}
-    					<p>No jobs are available.</p>
-					{% endif %}
 
 					<tr>
 						<td>
