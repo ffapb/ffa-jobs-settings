@@ -46,7 +46,7 @@ class IndexView(DepartmentMixin, generic.ListView):
         #Get a specific fileds from queryset
         #https://docs.djangoproject.com/en/1.7/topics/serialization/
         
-        data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
+        data = [{"job_id": job.id, "job_text": job.job_text, "job_department":job.department_id} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
 
