@@ -92,6 +92,31 @@ class DetailView(generic.DetailView):
           return JsonResponse(output)
 
 
+class DepartmentView(generic.DetailView):
+      model = Department
+      template_name = 'emailffa/department_detail.html'
+
+
+      def get(self, *args, **kwargs):
+
+          
+          asjson = self.request.GET.get('asjson', "false")
+          asjson=asjson.lower()=="true"
+          
+          if not asjson:
+              return super(DepartmentView, self).get(*args, **kwargs)
+
+          #https://stackoverflow.com/questions/34460708/checkoutview-object-has-no-attribute-object
+          self.object = self.get_object()
+          context = super(DepartmentView, self).get_context_data(**kwargs)
+          department = context["department"]
+          output = {
+            "department_id": department.id,
+            "department_name": department.name,
+            "department_set": [x.job_text for x in department.job_set.all()]
+          }
+          return JsonResponse(output)
+
 #def detail(request, job_id):
     #job = get_object_or_404(Job, pk=job_id)
     #return render(request, 'emailffa/detail.html', {'job': job})
