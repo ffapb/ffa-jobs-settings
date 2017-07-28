@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Job, Email, Department
+from .models import Job, Email, Tag
 
 
 class EmailInline(admin.StackedInline):
@@ -18,13 +18,13 @@ class JobAdmin(admin.ModelAdmin):
   inlines = [EmailInline]
   
 
-class DepartmentAdmin(admin.ModelAdmin):
+class TagAdmin(admin.ModelAdmin):
  
       list_display = ['name']
 
 admin.site.register(Job,JobAdmin)
 
-admin.site.register(Department,DepartmentAdmin)
+admin.site.register(Tag,TagAdmin)
 
 
 

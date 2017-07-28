@@ -2,27 +2,25 @@ import json
 #from django.core import serializers
 from django.views import generic
 from django.http import JsonResponse
-
-from .models import Job,Department
-#from .models import Email
+from .models import Job, Tag
 #from .models import Cron
 #from django.contrib.auth.models import Job
 from django.shortcuts import render
 from .filters import JobFilter
 from .__init__ import __version__
 
-class DepartmentMixin(object):
-    def get_departments(self):
-        return Department.objects.all()
+class TagMixin(object):
+    def get_tags(self):
+        return Tag.objects.all()
 
     def get_context_data(self, **kwargs):
-        context = super(DepartmentMixin, self).get_context_data(**kwargs)
-        context['departments'] = self.get_departments()
+        context = super(TagMixin, self).get_context_data(**kwargs)
+        context['tags'] = self.get_tags()
         return context
 
 
 
-class IndexView(DepartmentMixin, generic.ListView):
+class IndexView(TagMixin, generic.ListView):
     template_name = 'emailffa/index.html'
     context_object_name = 'latest_job_list'
     model= Job
@@ -46,7 +44,7 @@ class IndexView(DepartmentMixin, generic.ListView):
         #Get a specific fileds from queryset
         #https://docs.djangoproject.com/en/1.7/topics/serialization/
         
-        data = [{"job_id": job.id, "job_text": job.job_text, "job_department":job.department_id} for job in Job.objects.all()]
+        data = [{"job_id": job.id, "job_text": job.job_text, "job_tag":job.tag_id} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
 
@@ -92,9 +90,9 @@ class DetailView(generic.DetailView):
           return JsonResponse(output)
 
 
-class DepartmentView(generic.DetailView):
-      model = Department
-      template_name = 'emailffa/department_detail.html'
+class TagView(generic.DetailView):
+      model = Tag
+      template_name = 'emailffa/tag_detail.html'
 
 
       def get(self, *args, **kwargs):
@@ -104,16 +102,16 @@ class DepartmentView(generic.DetailView):
           asjson=asjson.lower()=="true"
           
           if not asjson:
-              return super(DepartmentView, self).get(*args, **kwargs)
+              return super(TagView, self).get(*args, **kwargs)
 
           #https://stackoverflow.com/questions/34460708/checkoutview-object-has-no-attribute-object
           self.object = self.get_object()
-          context = super(DepartmentView, self).get_context_data(**kwargs)
-          department = context["department"]
+          context = super(TagView, self).get_context_data(**kwargs)
+          tag = context["tag"]
           output = {
-            "department_id": department.id,
-            "department_name": department.name,
-            "department_set": [x.job_text for x in department.job_set.all()]
+            "tag_id": tag.id,
+            "tag_name": tag.name,
+            "tag_set": [x.job_text for x in tag.job_set.all()]
           }
           return JsonResponse(output)
 

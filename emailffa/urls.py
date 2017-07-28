@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^search/$', views.search, name='search'),
     url(r'^(?P<pk>[0-9]+)/$/?asjson=true', views.DetailView.as_view(), name='detail'),
-    url(r'^department/(?P<pk>[0-9]+)/$', views.DepartmentView.as_view(), name='department_detail'),
+    url(r'^tag/(?P<pk>[0-9]+)/$', views.TagView.as_view(), name='tag_detail'),
     
 
     
