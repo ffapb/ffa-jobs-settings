@@ -19,7 +19,7 @@ class Job(models.Model):
     job_text = models.CharField(max_length=255, unique=True)
     pub_date = models.DateTimeField('date published')
     job_cron=models.CharField(max_length=200)
-    tag = models.ForeignKey(Tag)
+    tag = models.ManyToManyField(Tag)
 
 
     def __str__(self):
