@@ -103,7 +103,7 @@
 								{% endfor %}
 <br>Tags:
 								{% for tag in job.tag.all %}
-									<a href="{% url 'emailffa:tag_detail' tag.id %}" style="text-decoration: none"> {{ tag.name }} |</a>{%empty%}none
+									<a href="{% url 'emailffa:tag_detail' tag.id %}" style="text-decoration: none"> {{ tag.name }}  {% if not forloop.last %}|{% else %}  {% endif %}</a>{%empty%}none
 								{% endfor %}
 								
 							</table>
