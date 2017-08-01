@@ -62,8 +62,17 @@
 
 				<table cellSpacing="0" cellPadding="0" width="779" align="center" border="0">
 					
-					<tr >
-						<td align="left" ><font size="3.5" color="#04366C"><b>{{ job.job_text }} <a href=" ?asjson=true" style="text-decoration: none">asjson</a></li>
+		<tr>
+			<td align="left" ><font size="3.5" color="#04366C"><b> 				</td>
+		<tr >
+						<td align="left" ><font size="3.5" color="#04366C"><b>{{ job.job_text }} 
+
+
+
+     
+  
+
+ <a href=" ?asjson=true" style="text-decoration: none">asjson</a></li>
 						</td> </b></font>
 <!-- <a href=%}" <button>Continue</button></a> </td> -->
 					</tr>
@@ -92,8 +101,11 @@
 									
 								 </tr>
 								{% endfor %}
+<br>Tags:
+								{% for tag in job.tag.all %}
+									<a href="{% url 'emailffa:tag_detail' tag.id %}" style="text-decoration: none"> {{ tag.name }} |</a>{%empty%}none
+								{% endfor %}
 								
-
 							</table>
 						</td>
 						

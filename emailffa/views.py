@@ -44,7 +44,7 @@ class IndexView(TagMixin, generic.ListView):
         #Get a specific fileds from queryset
         #https://docs.djangoproject.com/en/1.7/topics/serialization/
         
-        data = [{"job_id": job.id, "job_text": job.job_text, "job_tag":job.tag_id} for job in Job.objects.all()]
+        data = [{"job_id": job.id, "job_text": job.job_text} for job in Job.objects.all()]
         
         return JsonResponse(data,safe=False)
 
@@ -84,8 +84,7 @@ class DetailView(generic.DetailView):
             "job_id": job.id,
             "job_text": job.job_text,
             "pub_date": job.pub_date.strftime("%Y-%m-%d"),
-            "job_cron": job.job_cron,
-            "email_set": [x.email_text for x in job.email_set.all()]
+            "job_cron": job.job_cron,            "email_set": [x.email_text for x in job.email_set.all()]
           }
           return JsonResponse(output)
 
