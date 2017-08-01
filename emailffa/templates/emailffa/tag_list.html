@@ -1,0 +1,5 @@
+<h4>Tags</h4>
+   {% for tag in object_list %}
+    <a href="{% url 'emailffa:tag_detail' tag.id %}" style="text-decoration: none"> {{ tag.name }} &nbsp; &nbsp; </a>
+   
+   {% endfor %}
