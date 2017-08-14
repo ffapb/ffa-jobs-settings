@@ -66,34 +66,49 @@
 				<table cellSpacing="12px" cellPadding="0" width="779" align="center" border="0">
 					<tr><td>
 					{% include "emailffa/tag_list.html" with object_list=tags only %}
-					</td></tr>
-
-					<tr><td>
+						
 						
 
-
 					</td></tr>
 
+					
 
+					<tr><td>
+			</td></tr>
 	
 
 
 
 </tr>
+<tr></tr>
+
+
 <tr><td><h4>All Jobs</h4><a href=" ?asjson=true" style="text-decoration: none">asjson</a></td></tr>
 					{% if latest_job_list %}
     						<ul>
    					 {% for job in latest_job_list %}
 					
     					 <tr> 
-						<td>  <li><a href="{% url 'emailffa:detail' job.id %}" style="text-decoration: none">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }}  </a>
+						<td>  <li><a href="{% url 'emailffa:detail' job.id %}" style="text-decoration: none">id: {{ job.id }} &nbsp;&nbsp;{{ job.job_text }} </a>
 </td>
      					{% endfor %}
   						 </ul>
 					{% else %}
     					<p>No jobs are available.</p>
 					{% endif %}
+</td></tr>
 
+
+<tr><td>
+<h4>
+
+
+	 
+							
+</h4>
+
+
+</td></tr>
 					<tr>
 						<td>
 							<table align="center"><tr>

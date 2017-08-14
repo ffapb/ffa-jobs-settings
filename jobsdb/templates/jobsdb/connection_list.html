@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<title>FFA Private Bank - Jobs Email</title>
+<title>FFA Private Bank - Jobs Database</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 </HEAD>
@@ -9,17 +9,18 @@
 
 <table cellSpacing="0" cellPadding="0" width="779" align="center" border="0" >
 	<TBODY>
-		<tr><td>
-		<a  href="{% url 'emailffa:index' %}" style="text-decoration: none">Home</a>&nbsp;	<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-emails/" style="text-decoration: none">GitHub Link</a>&nbsp;<a  href="{% url 'emailffa:search' %}" style="text-decoration: none">Search</a></td>
-		</tr>
-
 		<tr>
-				
-			<td align="center"><br><br>
+	
+			<td align="center">
 				<table cellSpacing="0" cellPadding="0" width="779" border="0">
 				<TBODY>
-					<tr>
-						<td>
+			
+		<tr><td><br>
+<a  href="{% url 'jobsdb:index' %}" style="text-decoration: none">Home</a>&nbsp; |&nbsp;<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;|&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-db/" style="text-decoration: none">GitHub Link</a></td>
+</tr>
+					
+<tr>
+						<td><br>
 							<table cellSpacing="0" cellPadding="0" width="780" bgColor="#f1f1f1" border="0">
 								<tr>
 									<td align="left"><font size="5" color="#04366C"><b>FFA Private Bank sal</b></font>
@@ -37,8 +38,7 @@
 				</table>
                         </td>
 		</tr>
-
-		<tr>
+	<tr>
 			<td>
 
 				<table cellSpacing="0" cellPadding="0" border="0" align="center" width="779">
@@ -46,40 +46,28 @@
 						<td align = "center" height="25" width ="200">
 						<div align="center">
 						<FONT color="#ffffff"><MARQUEE bgcolor="#04366C" direction="left" loop="50" width="780" scrolldelay="150">
-						<STRONG>FFA Private Bank Jobs Email</STRONG></MARQUEE></FONT></DIV>
+						<STRONG>FFA Private Bank Jobs Database</STRONG></MARQUEE></FONT></DIV>
 						</td>
-					</tr>
 
 				</table>
 			</td>
 		</tr>
+
 		<tr>
 			<td height="12">
 			</td>
 		</tr>
-		<tr>
+               <tr>
 			<td >
 
 				<table cellSpacing="0" cellPadding="0" width="779" align="center" border="0">
 					
-		<tr>
-			<td align="left" ><font size="3.5" color="#04366C"><b> 				</td>
-		<tr >
-						<td align="left" ><font size="3.5" color="#04366C"><b>{{ job.job_text }} 
-
-
-
-     
-  
-
- <a href=" ?asjson=true" style="text-decoration: none">asjson</a></li>
+					<tr >
+						<td align="left" ><font size="3.5" color="#04366C"><b>{{ location.location_name }} </li>
 						</td> </b></font>
 <!-- <a href=%}" <button>Continue</button></a> </td> -->
 					</tr>
-					<tr>
-						<td height="30" >Cron: {{ job.job_cron }}
-					        </td>
-					</tr>
+					
 					<tr>
 						<td>
 							<table> 
@@ -88,28 +76,26 @@
  																	
 									<td height="12" >
 											<ul>
-											{% for email in job.email_set.all %}
+											{% for connection in location.connection_set.all %}
 											</ul>
 									</td>
 									
 								</tr>
 
 								 <tr>
-									<td height="30" >
-    									<li>{{ email.email_text }}</li>
+								  <td height="30" >
+								   Base:: {{ connection.base }}<br>
+    								   Ip: {{ connection.ip }}<br>
+							           Port: {{ connection.port }} <br>
+								   Mfdbname: {{ connection.mfdbname }}<br>
+							           Bfdbname: {{ connection.bfdbname }}<br><br>
 									</td>
 									
 								 </tr>
 								{% endfor %}
-<br>Tags:
-								{% for tag in job.tag.all %}
-									<a href="{% url 'emailffa:tag_detail' tag.id %}" style="text-decoration: none"> {{ tag.name }}  {% if not forloop.last %}|{% else %}  {% endif %}</a>{%empty%}none
-								{% endfor %}
 								
+
 							</table>
-
-
-
 						</td>
 						
 					</tr>
@@ -117,10 +103,9 @@
 				</table>
 			</td>
 		</tr>
-
 		<tr>
-			<td >
-				<table height="50" cellSpacing="0" cellPadding="0" width="100%" border="0" >
+			<td>
+				<table height="50" cellSpacing="0" cellPadding="0" width="100%" border="0">
 					<tr>
 						<td height="12"  style=" BORDER-top: #ffffff 1px solid; "></td>
 					</tr>
@@ -129,7 +114,7 @@
 						<td height="4"  style=" BORDER-top: #ffffff 1px solid; " bgColor="#04366C"></td>
 					</tr>
 					<tr>
-						<td bgColor="#f1f1f1" align ="right"><FONT color="#04366C" size="2">&nbsp;Developed by: Systems & IT Department - 2017&nbsp;</FONT.</td>
+						<td bgColor="#f1f1f1" align ="right"><FONT color="#04366C" size="2">&nbsp;Developed by: Minerva Moawad - 2017&nbsp;</FONT></td>
 					</tr>
 
 				</table>

@@ -8,17 +8,26 @@ from .models import Job, Tag
 from django.shortcuts import render
 from .filters import JobFilter
 from .__init__ import __version__
+from django import template
+from django.template.loader import get_template 
+from django.http import HttpResponse
+
+
 
 class TagMixin(object):
     def get_tags(self):
         return Tag.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(TagMixin, self).get_context_data(**kwargs)
-        context['tags'] = self.get_tags()
-        return context
+    #def get_context_data(self, **kwargs):
+        #context = super(TagMixin, self).get_context_data(**kwargs)
+        #context['tags'] = self.get_tags()
+        #return context
+    
 
-
+def index(request):
+    #template = get_template("emailffa/index0.html")
+    #return HttpResponse(template.render)
+    return render(request, "emailffa/index0.html")
 
 class IndexView(TagMixin, generic.ListView):
     template_name = 'emailffa/index.html'

@@ -1,0 +1,3 @@
+{% for job in latest_job_list %}
+	{{job.job_text}}({{job.tag.all.count}})
+{% endfor %}

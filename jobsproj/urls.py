@@ -20,5 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('emailffa.urls')),
+    url(r'^jobsdb/', include('jobsdb.urls', namespace="jobsdb")),
+    url(r'^emailffa/', include('emailffa.urls')),
     url(r'^admin/', admin.site.urls),
 ]
