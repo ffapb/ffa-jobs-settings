@@ -18,10 +18,10 @@ class TagMixin(object):
     def get_tags(self):
         return Tag.objects.all()
 
-    #def get_context_data(self, **kwargs):
-        #context = super(TagMixin, self).get_context_data(**kwargs)
-        #context['tags'] = self.get_tags()
-        #return context
+    def get_context_data(self, **kwargs):
+        context = super(TagMixin, self).get_context_data(**kwargs)
+        context['tags'] = self.get_tags()
+        return context
     
 
 def index(request):
