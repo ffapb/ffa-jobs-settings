@@ -16,11 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-
-
 urlpatterns = [
-    url(r'^', include('emailffa.urls')),
-    url(r'^jobsdb/', include('jobsdb.urls', namespace="jobsdb")),
+    url(r'^', include('home.urls')),
+    url(r'^jobsdb/', include('jobsdb.urls')),
     url(r'^emailffa/', include('emailffa.urls')),
     url(r'^admin/', admin.site.urls),
 ]

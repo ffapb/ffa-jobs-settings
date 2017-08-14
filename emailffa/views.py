@@ -23,12 +23,6 @@ class TagMixin(object):
         context['tags'] = self.get_tags()
         return context
     
-
-def index(request):
-    #template = get_template("emailffa/index0.html")
-    #return HttpResponse(template.render)
-    return render(request, "emailffa/index0.html")
-
 class IndexView(TagMixin, generic.ListView):
     template_name = 'emailffa/index.html'
     context_object_name = 'latest_job_list'
