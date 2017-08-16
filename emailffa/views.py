@@ -21,7 +21,9 @@ class TagMixin(object):
     def get_context_data(self, **kwargs):
         context = super(TagMixin, self).get_context_data(**kwargs)
         context['tags'] = self.get_tags()
+        context['has_tag_null']=Job.objects.filter(tag__isnull=True).count() # if job.tag is not None]
         return context
+   
     
 class IndexView(TagMixin, generic.ListView):
     template_name = 'emailffa/index.html'
@@ -55,6 +57,10 @@ class IndexView(TagMixin, generic.ListView):
       context = super(IndexView, self).get_context_data(**kwargs)
       context['version']=__version__
       return context
+
+    #def get_tags_null(self, **kwargs):
+      #queryset = Job.objects.filter(tag__isnull=True)
+      #return queryset
 
 
 #https://simpleisbetterthancomplex.com/tutorial/2016/11/28/how-to-filter-querysets-dynamically.html
@@ -116,6 +122,7 @@ class TagView(generic.DetailView):
             "tag_set": [x.job_text for x in tag.job_set.all()]
           }
           return JsonResponse(output)
+
 
 #def detail(request, job_id):
     #job = get_object_or_404(Job, pk=job_id)
