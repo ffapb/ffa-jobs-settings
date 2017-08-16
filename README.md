@@ -1,5 +1,7 @@
 
-	
+It's a Web app:
+- To set emails for each cron job
+- For switching the system database server from a location to other one 
 # Installation
 Check Dockerfile
 
