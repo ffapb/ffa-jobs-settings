@@ -1,7 +1,11 @@
 
 It's a Web app:
 - To set emails for each cron job
-- For switching the system database server from a location to other one 
+- For switching the system database server from a location to other one:
+	1. define connection information: ip, port, user, password, mf db name, bf db name
+	2. define above information multiple times: for different locations
+
+
 # Installation
 Check Dockerfile
 
