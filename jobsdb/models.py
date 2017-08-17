@@ -19,4 +19,4 @@ class Connection(models.Model):
     bfdbname= models.CharField(max_length=200)
 
     def __str__(self):
-        return self.ip
+        return self.location, self.base
