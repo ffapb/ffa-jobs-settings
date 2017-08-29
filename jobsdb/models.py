@@ -14,7 +14,7 @@ class Connection(models.Model):
     base= models.CharField(max_length=200)	
     location = models.ForeignKey(Location)
     ip = models.CharField(max_length=200)
-    port = models.IntegerField(default=0)
+    port = models.CharField(max_length=200)
     mfdbname= models.CharField(max_length=200)
     bfdbname= models.CharField(max_length=200)
     user= models.CharField(max_length=200)
