@@ -24,4 +24,5 @@ Copy database file from local server to docker container:
 > docker cp ~/db.sqlite3 3b94119bfb68:/usr/share/ffa-jobs-emails/
 ```
 
-
+# Developer notes
+[DEVNOTES.md](DEVNOTES.md)

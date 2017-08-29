@@ -1,19 +1,13 @@
 FROM python:alpine
 RUN apk --update add git gcc musl-dev 
 RUN pip3 install pew
-RUN pew new FFA_JOBS_EMAILS
+RUN pew new -d --python=python3 FFA_JOBS_SETTINGS
 
-# pymssql on separate line because it's such a pain
-# also, can't just use pymssql until https://github.com/pymssql/pymssql/issues/432#issuecomment-238257092
-RUN pew in FFA_JOBS_EMAILS pip3 install Django
-
-
-# for queryset filter in openCasesSameDate
-RUN pew in FFA_JOBS_EMAILS pip install pytz
-RUN pew in FFA_JOBS_EMAILS pip install django_filter
+# pytz: for queryset filter in openCasesSameDate
+RUN pew in FFA_JOBS_SETTINGS pip install Django pytz django_filter
 
 EXPOSE 8000
-WORKDIR /usr/share/ffa-jobs-emails
+WORKDIR /usr/share/ffa-jobs-settings
 COPY . .
 
 COPY docker-entry.sh /usr/bin/
