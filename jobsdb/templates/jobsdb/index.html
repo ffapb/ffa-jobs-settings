@@ -16,7 +16,7 @@
 				<TBODY><br>
 			
 	<tr><td>
-<a  href="{% url 'home:index' %}" style="text-decoration: none">Home</a>&nbsp; |&nbsp;<a  href="{% url 'emailffa:index' %}" style="text-decoration: none">emailffa</a>&nbsp; |&nbsp;<a  href="{% url 'jobsdb:index' %}" style="text-decoration: none"> jobs db</a>&nbsp; |&nbsp;<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;|&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-db/" style="text-decoration: none">GitHub Link</a></td>
+<a  href="{% url 'home:index' %}" style="text-decoration: none">Home</a>&nbsp; |&nbsp;<a  href="{% url 'emailffa:index' %}" style="text-decoration: none">emailffa</a>&nbsp; |&nbsp;<a  href="{% url 'jobsdb:index' %}" style="text-decoration: none"> jobs db</a>&nbsp; |&nbsp;<a  href="{% url 'admin:index' %}" style="text-decoration: none">Admin</a>&nbsp;|&nbsp;<a  href="https://github.com/minerva22/ffa-jobs-settings/" style="text-decoration: none">GitHub Link</a></td>
 </tr>
 					
 <tr>
@@ -57,7 +57,8 @@
 			<td height="12">
 			</td>
 		</tr>
-                <tr><td><h4>Locations</h4>
+
+                <tr><td><h4>Locations <a href=" ?asjson=true" style="text-decoration: none">asjson</a></h4> 
 					{% if location_list %}
     						<ul>
    					 {% for location in location_list %}
