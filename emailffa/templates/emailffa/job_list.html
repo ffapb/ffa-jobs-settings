@@ -18,27 +18,20 @@ A:hover {  background-color: red; TEXT-DECORATION: none; font-weight: none }
 	<TBODY>
 		<tr>
 	
-			<td align="center">
+			<td align="center"><br><br>
 				<table cellSpacing="0" cellPadding="0" width="779" border="0">
 				<TBODY>
-			<tr><td><br>
+			<tr><td>
       {% include 'emailffa/head.html' %}
 </td>
 </tr>
 	
 					
 <tr>
-						<td><br><br>
-							<table cellSpacing="0" cellPadding="0" width="780" bgColor="#f1f1f1" border="0">
-								<tr>
-									<td align="left"><font size="5" color="#04366C"><b>FFA Private Bank sal</b></font>
-									</td>
+						<td>
+									 {% include 'emailffa/head2.html' %}
 
-								</tr>
-								<tr>
-									<td align="right">&nbsp;</td>
-								</tr>
-							</table>
+								
 						</td>
 					</tr>
 				</TBODY>
@@ -175,17 +168,4 @@ A:hover {  background-color: red; TEXT-DECORATION: none; font-weight: none }
 					<tr>
 						<td height="4"  style=" BORDER-top: #ffffff 1px solid; " bgColor="#04366C"></td>
 					</tr>
-					<tr>
-						<td bgColor="#f1f1f1" align ="right"><FONT color="#04366C" size="2">&nbsp;Developed by: Minerva Moawad - 2017&nbsp;</FONT></td>
-					</tr>
-
-				</table>
-			</td>
-		</tr>
-		
-	</TBODY>
-</table>
-
-</body>
-
-</html>
+		{% include 'emailffa/footer.html' %}

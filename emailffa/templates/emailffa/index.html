@@ -29,21 +29,7 @@ A:hover {  background-color: red; TEXT-DECORATION: none; font-weight: none }
 </tr>
 	
 					
-<tr>
-						<td><br>
-							<table cellSpacing="0" cellPadding="0" width="780" bgColor="#f1f1f1" border="0">
-								<tr>
-									<td align="left"><font size="5" color="#04366C"><b>FFA Private Bank sal</b></font>
-									</td>
 
-								</tr>
-								<tr>
-									<td align="right">&nbsp;</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</TBODY>
 
 				</table>
                         </td>
@@ -53,14 +39,7 @@ A:hover {  background-color: red; TEXT-DECORATION: none; font-weight: none }
 
 				<table cellSpacing="0" cellPadding="0" border="0" align="center" width="779">
 					<tr>
-						<td align = "center" height="25" width ="200">
-						<div align="center">
-						<FONT color="#ffffff"><MARQUEE bgcolor="#04366C" direction="left" loop="50" width="780" scrolldelay="150">
-						<STRONG>FFA Private Bank Jobs Email</STRONG></MARQUEE></FONT></DIV>
-						</td>
-
-				</table>
-			</td>
+						 {% include 'emailffa/head2.html' %}
 		</tr>
 
 		<tr>
@@ -201,17 +180,4 @@ A:hover {  background-color: red; TEXT-DECORATION: none; font-weight: none }
 <tr align="right">
 <td>Version: {{version}}</td>
 </tr>
-					<tr>
-						<td bgColor="#f1f1f1" align ="right"><FONT color="#04366C" size="2">&nbsp;Developed by: Minerva Moawad - 2017&nbsp;</FONT></td>
-					</tr>
-
-				</table>
-			</td>
-		</tr>
-		
-	</TBODY>
-</table>
-
-</body>
-
-</html>
+{% include 'emailffa/footer.html' %}
