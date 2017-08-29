@@ -63,7 +63,7 @@ class DetailView(generic.DetailView):
           output = {
            
             "location_name": location.location_name,
-            "connection_set": [["base:" + x.base+ ", " + "host:" +x.ip + ", " + "user:"+ x.user + ", " + "password:" + x.password] for x in location.connection_set.all()]
+            "connection_set": [["base:" + x.base+ ", " + "host:" +x.ip + ", " +"port:" + x.port + ", " + "user:"+ x.user + ", " + "password:" + x.password] for x in location.connection_set.all()]
           }
           return JsonResponse(output)
 
