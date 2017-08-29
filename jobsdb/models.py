@@ -17,6 +17,8 @@ class Connection(models.Model):
     port = models.IntegerField(default=0)
     mfdbname= models.CharField(max_length=200)
     bfdbname= models.CharField(max_length=200)
+    user= models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.location, self.base
+        return "%s:  %s"%(self.location, self.base)
