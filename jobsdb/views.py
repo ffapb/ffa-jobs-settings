@@ -1,10 +1,10 @@
 from django.shortcuts import render
-
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 import json
 from django.http import JsonResponse
 from django.views import generic
-
+from django import forms 
 from .models import Location, Connection
 
 
@@ -38,6 +38,23 @@ class IndexView( generic.ListView):
         return JsonResponse(data,safe=False)
 
 
+#https://stackoverflow.com/questions/3233850/django-jquery-cascading-select-boxes
+
+#class FormView(generic.ListView):
+      
+   #def get(self, request):
+     #context = {'connection': None, 'locations': Location.objects.all().order_by('location_name')}
+     #if 'location' in request.POST:
+         #context['location'] = request.POST['location']
+         #context['connections'] = Connection.objects.filter(
+             #location=context['location']).order_by('location_name')
+     #if 'connection' in request.POST:
+         #context['connection'] = request.POST['connection']
+    # else:
+        # context['connections'] = []
+         #context['location'] = None
+     # ...Set the rest of the Context here....
+    # return render_to_response("jobsdb/location_form.html", context) 
 
 class DetailView(generic.DetailView):
       model = Location
@@ -66,4 +83,11 @@ class DetailView(generic.DetailView):
             "connection_set": [["base:" + x.base+ ", " + "host:" +x.ip + ", " +"port:" + x.port + ", " + "user:"+ x.user + ", " + "password:" + x.password] for x in location.connection_set.all()]
           }
           return JsonResponse(output)
+
+
+class LocationView(generic.ListView):
+    model= Location
+    form = LocationForm()
+    template_name = 'jobsdb/location_form.html'
+ 
 
