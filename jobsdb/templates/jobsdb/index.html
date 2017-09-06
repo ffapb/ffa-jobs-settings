@@ -65,7 +65,7 @@
    					 {% for location in location_list %}
 					
     					 <tr> 
-						<td>  <li> <a href="{% url 'jobsdb:connection_list' location.id %}">{{ location.location_name }}</a>  
+						<td>  <li> <a href="{% url 'jobsdb:connection_list' location.id %}">{{ location.location_name }} {% if location.isdefault %} (default){%endif%}</a>  
 </td>
      					{% endfor %}
   						 </ul>

@@ -5,20 +5,22 @@ from django.http import JsonResponse
 
 from django import forms   
 
-LOCATIONS_CHOICES = (
-    ('beirut','BEIRUT'),
-    ('bsalim', 'BSALIM'),
-    ('test','TEST'),
-    
-)
+
 
 
 class Location(models.Model):
   
-   location_name = models.CharField(max_length=10, locations=LOCATIONS_CHOICES, default='beirut')
+   location_name = models.CharField(max_length=10)
+   isdefault=models.BooleanField(default=False)
     
    def __str__(self):
         return self.location_name
+   
+   def clean(self):
+       if not self.isdefault: return 
+       for l in Location.objects.all():
+           l.isdefault= False
+           l.save()
    
 class Connection(models.Model):
     base= models.CharField(max_length=200)	
