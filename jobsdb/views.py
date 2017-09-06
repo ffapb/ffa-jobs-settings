@@ -33,7 +33,7 @@ class IndexView( generic.ListView):
         #Get a specific fileds from queryset
         #https://docs.djangoproject.com/en/1.7/topics/serialization/
         
-        data = [{"location_id": location.id, "location_name": location.location_name} for location in Location.objects.all()]
+        data = [{"location_id": location.id, "location_name": location.location_name, "isdefault": location.isdefault} for location in Location.objects.all()]
         
         return JsonResponse(data,safe=False)
 
@@ -80,14 +80,11 @@ class DetailView(generic.DetailView):
           output = {
            
             "location_name": location.location_name,
-            "connection_set": [["base:" + x.base+ ", " + "host:" +x.ip + ", " +"port:" + x.port + ", " + "user:"+ x.user + ", " + "password:" + x.password] for x in location.connection_set.all()]
+            "connection_set": {
+                 x.base: {"base": x.base, "host": x.ip, "port": x.port, "user": x.user, "password": x.password} 
+                 for x in location.connection_set.all()
+            }
           }
           return JsonResponse(output)
 
-
-class LocationView(generic.ListView):
-    model= Location
-    form = LocationForm()
-    template_name = 'jobsdb/location_form.html'
- 
 
