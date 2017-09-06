@@ -3,11 +3,21 @@ import json
 from django.db import models
 from django.http import JsonResponse
 
+from django import forms   
+
+LOCATIONS_CHOICES = (
+    ('beirut','BEIRUT'),
+    ('bsalim', 'BSALIM'),
+    ('test','TEST'),
+    
+)
+
 
 class Location(models.Model):
-    location_name = models.CharField(max_length=200)
+  
+   location_name = models.CharField(max_length=10, locations=LOCATIONS_CHOICES, default='beirut')
     
-    def __str__(self):
+   def __str__(self):
         return self.location_name
    
 class Connection(models.Model):
